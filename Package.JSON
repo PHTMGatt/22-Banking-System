@@ -1,0 +1,11 @@
+{
+  "name": "banking-system-cli",
+  "version": "1.0.0",
+  "description": "Simple Python CLI banking application",
+  "main": "main.py",
+  "scripts": {
+    "start": "python3 main.py"
+  },
+  "author": "",
+  "license": "MIT"
+}
