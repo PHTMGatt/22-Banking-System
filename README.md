@@ -28,8 +28,8 @@ Users can securely log in, view checking and savings balances, make deposits, wi
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/yourusername/banking-system-cli.git
-   cd banking-system-cli
+   git clone https://github.com/PHTMGatt/22-Banking-System.git
+   cd 22-Banking-System
    ```
 
 2. (Optional) Create and activate a virtual environment:  
