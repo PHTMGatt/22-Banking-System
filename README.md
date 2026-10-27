@@ -1,5 +1,9 @@
 # Banking System CLI App
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/PHTMGatt/12-React-Portfolio/main/src/assets/photos/Banking%20System.webp" width="900" alt="Python Banking System project artwork">
+</p>
+
 A simple command-line banking application built with Python OOP principles.  
 Users can securely log in, view checking and savings balances, make deposits, withdrawals, and transfers between accounts.
 
