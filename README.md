@@ -1,7 +1,7 @@
 # Banking System CLI App
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/PHTMGatt/12-React-Portfolio/main/src/assets/photos/Banking%20System.webp" width="900" alt="Python Banking System project artwork">
+  <img src="https://raw.githubusercontent.com/PHTMGatt/12-React-Portfolio/main/src/assets/photos/Banking%20System.svg" width="900" alt="Python Banking System project artwork">
 </p>
 
 A simple command-line banking application built with Python OOP principles.  
