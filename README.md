@@ -8,7 +8,7 @@ A command-line banking app in plain Python, built around an object-oriented acco
 
 ## What it does
 
-- **Login checks:** the email must contain an `@`, and the password needs 8 or more characters with an uppercase letter, a lowercase letter, a digit and one of `!@#$%^&*`. Login attempts are limited.
+- **Login checks:** the email must contain an `@`, and the password needs 8 or more characters with an uppercase letter, a lowercase letter, a digit and one of `!@#$%^&*`. You get 3 login attempts before the program exits.
 - **Two accounts:** checking and savings both start from fixed demo balances ($4,321.00 and $6,543.21). Nothing is saved between runs and there is no real banking behind it.
 - **Money moves:** deposit to either account, withdraw with a $100 overdraft allowance, and transfer in both directions.
 - **Input handling:** bad menu choices, non-numeric amounts and overdraft errors re-prompt instead of crashing. Balances print as currency (`$4,321.00`).
@@ -23,7 +23,7 @@ Python 3 only. No third-party packages.
 python3 Main/main.py
 ```
 
-`Main/` is the commented version of the app. `Develop/` holds a second copy of the same code with fewer comments.
+`Main/` is the commented version of the app. `Develop/` is an older, less-commented copy of the same app and is not the one to run.
 
 A session starts like this:
 
