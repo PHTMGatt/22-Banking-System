@@ -1,99 +1,65 @@
-# Banking System CLI App
+# Banking System CLI
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/PHTMGatt/12-React-Portfolio/main/src/assets/photos/Banking%20System.webp" width="900" alt="Python Banking System project artwork">
 </p>
 
-A simple command-line banking application built with Python OOP principles.  
-Users can securely log in, view checking and savings balances, make deposits, withdrawals, and transfers between accounts.
+A command-line banking app in plain Python, built around an object-oriented account design: log in, then deposit, withdraw and transfer between checking and savings.
 
----
+## What it does
 
-## Features
+- **Login checks:** the email must contain an `@`, and the password needs 8 or more characters with an uppercase letter, a lowercase letter, a digit and one of `!@#$%^&*`. Login attempts are limited.
+- **Two accounts:** checking and savings both start from fixed demo balances ($4,321.00 and $6,543.21). Nothing is saved between runs and there is no real banking behind it.
+- **Money moves:** deposit to either account, withdraw with a $100 overdraft allowance, and transfer in both directions.
+- **Input handling:** bad menu choices, non-numeric amounts and overdraft errors re-prompt instead of crashing. Balances print as currency (`$4,321.00`).
 
-- **User Authentication**  
-  - Email validation (`@` symbol)  
-  - Password complexity: minimum 8 chars, uppercase, lowercase, digit, special character
+## Tech stack
 
-- **Account Management**  
-  - View current balances for Checking and Savings  
-  - Deposit funds into either account  
-  - Withdraw funds with overdraft protection (up to \$100)  
-  - Transfer funds between Checking and Savings
+Python 3 only. No third-party packages.
 
-- **Robust Input Handling**  
-  - Recursive prompts on invalid choices  
-  - Formatted currency output (commas + two decimals)  
-  - Maximum 3 login attempts
+## Run it
 
----
-
-## Installation
-
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/yourusername/banking-system-cli.git
-   cd banking-system-cli
-   ```
-
-2. (Optional) Create and activate a virtual environment:  
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate   # macOS/Linux
-   venv\Scripts\activate    # Windows
-   ```
-
-3. Install dependencies (if any):  
-   ```bash
-   pip install -r requirements.txt
-   ```
-
----
-
-## Usage
-
-Run the main application:
 ```bash
-python3 main.py
+python3 Main/main.py
 ```
 
-**Workflow:**
-1. Enter your email and password (up to 3 attempts).  
-2. View initial checking (\$4,321.00) and savings (\$6,543.21) balances.  
-3. Choose an action:
-   - `1` Deposit  
-   - `2` Withdraw  
-   - `3` Transfer  
-   - `4` Check balances  
-   - `q` Quit  
-4. Follow on-screen prompts to complete the transaction.  
+`Main/` is the commented version of the app. `Develop/` holds a second copy of the same code with fewer comments.
 
----
-
-## Project Structure
+A session starts like this:
 
 ```
-.
-├── BankingClasses/
-│   ├── banking.py        # Abstract BankAccount base class
-│   ├── checking.py      # CheckingAccount implementation
-│   ├── savings.py       # SavingsAccount implementation
-│   └── validation.py    # Email/password validators
-├── BankingFunctions/
-│   ├── deposit.py       # handle_deposit()
-│   ├── withdraw.py      # handle_withdrawal()
-│   └── transfer.py      # handle_transfer(), balances()
-├── Assets/              # Mock-up terminal screenshots
-│   ├── python-terminal-max-attempts.png
-│   ├── python-terminal-options.png
-│   └── ...
-├── main.py              # Application entry point
-├── requirements.txt     # Python dependencies
-└── README.md            # You are here
+Here are your account balances:
+Checking: $4,321.00
+Savings:  $6,543.21
+
+What would you like to do?
+Make a deposit? Enter 1
+Make a withdrawal? Enter 2
+Make a transfer? Enter 3
+Check account balances? Enter 4
+Quit? Enter q
 ```
 
----
+More terminal screenshots (deposit, withdrawal, transfer, failed logins) are in the `Assets/` folder. There is no automated test suite.
 
-## License
+## Structure
 
-MIT © [Bryen Gatt]
+```
+Main/
+  main.py               entry point: login, menu loop
+  BankingClasses/
+    banking.py          abstract BankAccount base class
+    checking.py         CheckingAccount
+    savings.py          SavingsAccount
+    validation.py       email and password checks
+  BankingFunctions/
+    deposit.py          deposit prompts
+    withdraw.py         withdrawal prompts
+    transfer.py         transfers and balance printout
+```
+
+## What I learned / built
+
+- Object-oriented design in Python: an abstract base class with two account subclasses that share an interface.
+- Validating user input and handling errors with exceptions so a typo never ends the session.
+- Splitting a small program into classes and handler modules instead of one long script.
