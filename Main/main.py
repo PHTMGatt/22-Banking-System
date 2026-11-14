@@ -30,19 +30,17 @@ def main():
     # NOTE; Initialize login attempt counter
     attempts = 1
     # NOTE; Allow up to 3 attempts for correct credentials
-    while attempts < 3:
-        # NOTE; Validate email format and password strength
-        if not Validation.validate_email(email) or not Validation.validate_password(password):
-            print("\nInvalid email or password. Please try again.")
-            email = input("Enter your email: ")
-            password = input("Enter your password: ")
-            attempts += 1
-        else:
-            # NOTE; Break if validation succeeds
-            break
+    while attempts < 3 and not (
+        Validation.validate_email(email) and Validation.validate_password(password)
+    ):
+        # NOTE; Credentials failed validation: ask again
+        print("\nInvalid email or password. Please try again.")
+        email = input("Enter your email: ")
+        password = input("Enter your password: ")
+        attempts += 1
 
-    # NOTE; Exit if maximum attempts reached
-    if attempts == 3:
+    # NOTE; Exit if the third attempt also failed validation
+    if not (Validation.validate_email(email) and Validation.validate_password(password)):
         print("Maximum number of attempts reached. Exiting program.")
         return
 
