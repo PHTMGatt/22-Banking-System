@@ -1,8 +1,8 @@
 # Banking System CLI
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/PHTMGatt/12-React-Portfolio/main/src/assets/photos/Banking%20System.webp" width="900" alt="Python Banking System project artwork">
-</p>
+[![CI](https://github.com/PHTMGatt/22-Banking-System/actions/workflows/ci.yml/badge.svg)](https://github.com/PHTMGatt/22-Banking-System/actions/workflows/ci.yml)
+
+![Banking System CLI menu](docs/screenshot.png)
 
 A command-line banking app in plain Python, built around an object-oriented account design: log in, then deposit, withdraw and transfer between checking and savings.
 
