@@ -1,0 +1,48 @@
+# security-med
+# MED: nightly and manual. Full-history secret scan.
+# Schedule and manual runs only exist once this file is on the default branch; until then it also runs
+# when claude-forge changes this file, so it is proven green first.
+# Read-only: no secrets, no deploys.
+name: security-med
+
+on:
+  schedule:
+    - cron: '38 6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [claude-forge]
+    paths: ['.github/workflows/security-med.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-med-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GITLEAKS_VERSION: 8.21.2
+
+jobs:
+  med:
+    name: med (history)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install gitleaks (pinned, checksum-verified)
+        run: |
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
+          tarball="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          cd "$RUNNER_TEMP"
+          curl -fsSLO "$base/$tarball"
+          curl -fsSLO "$base/gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+          grep " ${tarball}\$" "gitleaks_${GITLEAKS_VERSION}_checksums.txt" | sha256sum -c -
+          tar -xzf "$tarball" gitleaks
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+
+      - name: Secret scan (all commits, redacted)
+        run: gitleaks git . --config .gitleaks.toml --redact --no-banner --verbose
