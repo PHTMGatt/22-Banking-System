@@ -6,6 +6,10 @@
 
 A command-line banking app in plain Python, built around an object-oriented account design: log in, then deposit, withdraw and transfer between checking and savings.
 
+## Status
+
+Coursework project. Checked 2026-11-26 with Python 3.12: all files parse and `Main/main.py` starts at the login prompts; the money menu was not re-tested. No automated tests.
+
 ## What it does
 
 - **Login checks:** the email must contain an `@`, and the password needs 8 or more characters with an uppercase letter, a lowercase letter, a digit and one of `!@#$%^&*`. You get 3 login attempts before the program exits.
